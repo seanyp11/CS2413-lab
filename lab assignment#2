@@ -100,7 +100,6 @@ int myQueuePop(MyQueue* obj) {
     if ( !myQueueEmpty(obj) ){
         Node* front = obj->head->next;
         obj->head->next = front->next;
-        //if it's the last node, we point tail back to head:
         if (obj->head->next == obj->tail) obj->tail->next = obj->head;
         int val = front->val;
         free(front);
