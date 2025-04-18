@@ -57,8 +57,7 @@ int* inorderTraversal(struct TreeNode* root, int* returnSize)
     size_t count = countNodes(root);
     *returnSize = count;
     unsigned int i = 0;
-    int* res = malloc(count*sizeof(int));
-    traverse(root, res, &i);
-    return res;
+    int* result = malloc(count*sizeof(int));
+    traverse(root, result, &i);
+    return result;
 }    
-
