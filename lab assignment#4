@@ -1,0 +1,32 @@
+#include <stdbool.h>
+
+bool isMirror(struct TreeNode* t1, struct TreeNode* t2) {
+    if (t1 == NULL && t2 == NULL) return true;
+    if (t1 == NULL || t2 == NULL) return false;
+    return (t1->val == t2->val)
+        && isMirror(t1->left, t2->right)
+        && isMirror(t1->right, t2->left);
+}
+
+bool isSymmetric(struct TreeNode* root) {
+    if (root == NULL) return true;
+    return isMirror(root->left, root->right);
+}
+
+//number if islands
+
+void dfs(char** grid, int gridsize, int* gridcolsize, int i, int j) {
+    if (i < 0 || i >= gridSize || j < 0 || j >= gridcolsize[i] || grid[i][j] == '0') {
+        return;
+    }
+    grid[i][j] = '0'; // Mark the cell as visited
+    dfs(grid, gridsize, gridcolsize, i + 1, j);
+    dfs(grid, gridsize, gridcolsize, i - 1, j);
+    dfs(grid, gridsize, gridcolsize, i, j + 1);
+    dfs(grid, gridsize, gridcolsize, i, j - 1);
+}
+int numIslands(char** grid, int gridsize, int* gridcolsize) {int count=0;
+    for(int i=0;i<gridsize;i++){for(int j=0;j<gridcolsize[i];j++){
+                    if(grid[i][j]=='1'){count+=1;}  dfs(grid, gridsize, gridcolsize, i, j);           }    }
+                    return count;
+}
