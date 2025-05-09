@@ -16,7 +16,7 @@ bool isSymmetric(struct TreeNode* root) {
 //number if islands
 
 void dfs(char** grid, int gridsize, int* gridcolsize, int i, int j) {
-    if (i < 0 || i >= gridSize || j < 0 || j >= gridcolsize[i] || grid[i][j] == '0') {
+    if (i < 0 || i >= gridsize || j < 0 || j >= gridcolsize[i] || grid[i][j] == '0') {
         return;
     }
     grid[i][j] = '0'; // Mark the cell as visited
